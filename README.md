@@ -165,7 +165,14 @@ Após a integração com o **Oracle Database** (banco da FIAP), as requisições
   "alimentacoes": [],
   "recomendacoes": []
 }
+```
+### 🧪 Coleção de Testes (Requisito G)
 
+A coleção completa do Postman com todos os *endpoints* (GET, POST, PUT, DELETE) está disponível no repositório.
+
+O professor pode importar este ficheiro para validar a persistência e recuperação dos dados:
+
+* **Link para Download:** [./docs/RequisiçõesSprint2-Java.postman_collection](https://github.com/tricodelabs3/Sprint2-Java-Advanced/blob/main/docs/Requisi%C3%A7%C3%B5esSprint2-Java.postman_collection)
 
 
 
@@ -248,6 +255,7 @@ Para cumprir os requisitos da entrega (critérios b e f-3.4), seguem os três di
 
 > 💬 **Equipe Saúde Inteligente**  
 > *“Prevenir é mais inteligente do que remediar.”*
+
 
 
 
