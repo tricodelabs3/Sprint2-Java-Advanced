@@ -68,7 +68,6 @@ mvn spring-boot:run
 
 ```
 ### 💾 Conexão com o Oracle DataBase (FIAP)
-
 # =========================================
 # 🔹 CONEXÃO COM ORACLE (FIAP)
 # =========================================
@@ -246,6 +245,7 @@ Para cumprir os requisitos da entrega (critérios b e f-3.4), seguem os três di
 
 > 💬 **Equipe Saúde Inteligente**  
 > *“Prevenir é mais inteligente do que remediar.”*
+
 
 
 
