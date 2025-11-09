@@ -224,6 +224,22 @@ Esses avanços posicionam o projeto no **Nível 3 do Modelo REST de Richardson**
 - 🧰 Adicionar Swagger UI para documentação dos endpoints
 - ⚡ Otimizar performance e padronizar respostas da API
 
+- ## 📊 . Diagramas (Sprint 2)
+
+Para cumprir os requisitos da entrega (critérios b e f-3.4), seguem os três diagramas que representam a solução:
+
+### 1. Diagrama de Arquitetura
+![Diagrama de Arquitetura](<img width="121" height="681" alt="Diagrama de arquitetura drawio" src="https://github.com/user-attachments/assets/86c3882c-9ae2-4923-8212-aecb3d019b25" />
+)
+
+### 2. Diagrama de Classes de Entidade
+![Diagrama de Entidades](<img width="921" height="502" alt="Diagrama_Sprint1_Vitta drawio" src="https://github.com/user-attachments/assets/ca1e0bd5-ce97-4553-8b3e-a9d877d3825a" />
+)
+
+### 3. Diagrama de Entidade e Relacionamento (DER)
+![Diagrama DER](<img width="1281" height="1111" alt="Diagrama de Entidade e Relacionamento (DER)  drawio" src="https://github.com/user-attachments/assets/d1cabbf8-d04c-4c29-b78f-2eaaa3faebec" />
+)
+
 ## 💾  Link do vídeo de apresentação
 
 🔗 [https://youtu.be/86jrndKIOwo]
@@ -232,6 +248,7 @@ Esses avanços posicionam o projeto no **Nível 3 do Modelo REST de Richardson**
 
 > 💬 **Equipe Saúde Inteligente**  
 > *“Prevenir é mais inteligente do que remediar.”*
+
 
 
 
