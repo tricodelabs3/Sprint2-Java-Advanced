@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
@@ -37,6 +38,12 @@ public class UsuarioController {
             dto.add(linkTo(methodOn(UsuarioController.class).getAll()).withRel("allUsuarios"));
             return dto;
         }).collect(Collectors.toList());
+    }
+
+    // 🔹 GET - Resumo de saúde de todos os usuários
+    @GetMapping("/resumo")
+    public List<Map<String, Object>> getResumoSaude() {
+        return service.getResumoSaude();
     }
 
     // 🔹 GET - Busca um usuário por ID
@@ -94,4 +101,6 @@ public class UsuarioController {
         service.delete(id);
         return "Usuário deletado com sucesso!";
     }
+
+
 }

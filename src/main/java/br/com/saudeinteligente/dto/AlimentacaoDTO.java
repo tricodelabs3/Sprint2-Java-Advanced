@@ -1,10 +1,11 @@
 package br.com.saudeinteligente.dto;
 
 import lombok.Data;
+import org.springframework.hateoas.RepresentationModel;
 import java.time.LocalTime;
 
 @Data
-public class AlimentacaoDTO {
+public class AlimentacaoDTO extends RepresentationModel<AlimentacaoDTO> {
     private Long idAlimentacao;
     private LocalTime hora;
     private String descricao;

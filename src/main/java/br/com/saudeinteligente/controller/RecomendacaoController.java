@@ -8,6 +8,7 @@ import br.com.saudeinteligente.service.UsuarioService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 @RestController
 @RequestMapping("/api/recomendacoes")
@@ -23,42 +24,48 @@ public class RecomendacaoController {
 
     @GetMapping
     public List<RecomendacaoDTO> getAll() {
-        return service.findAll().stream().map(this::toDTO).collect(Collectors.toList());
+        return service.findAll().stream().map(this::toDTOWithLinks).collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
     public RecomendacaoDTO getById(@PathVariable Long id) {
-        return toDTO(service.findById(id));
+        return toDTOWithLinks(service.findById(id));
     }
 
     @GetMapping("/usuario/{usuarioId}")
     public List<RecomendacaoDTO> getByUsuario(@PathVariable Long usuarioId) {
-        return service.findByUsuario(usuarioId).stream().map(this::toDTO).collect(Collectors.toList());
+        return service.findByUsuario(usuarioId).stream().map(this::toDTOWithLinks).collect(Collectors.toList());
     }
 
     @PostMapping
     public RecomendacaoDTO create(@RequestBody RecomendacaoDTO dto) {
-        Recomendacao r = toEntity(dto);
-        return toDTO(service.save(r));
+        return toDTOWithLinks(service.save(toEntity(dto)));
     }
 
     @PutMapping("/{id}")
     public RecomendacaoDTO update(@PathVariable Long id, @RequestBody RecomendacaoDTO dto) {
         Recomendacao r = toEntity(dto);
         r.setIdRecomendacao(id);
-        return toDTO(service.save(r));
+        return toDTOWithLinks(service.save(r));
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) { service.delete(id); }
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
+    }
 
-    private RecomendacaoDTO toDTO(Recomendacao r) {
+    private RecomendacaoDTO toDTOWithLinks(Recomendacao r) {
         if (r == null) return null;
         RecomendacaoDTO dto = new RecomendacaoDTO();
         dto.setIdRecomendacao(r.getIdRecomendacao());
         dto.setTexto(r.getTexto());
         dto.setGeradoPor(r.getGeradoPor());
         dto.setUsuarioId(r.getUsuario() != null ? r.getUsuario().getIdUsuario() : null);
+
+        dto.add(linkTo(methodOn(RecomendacaoController.class).getById(r.getIdRecomendacao())).withSelfRel());
+        dto.add(linkTo(methodOn(RecomendacaoController.class).getAll()).withRel("allRecomendacoes"));
+        if (r.getUsuario() != null)
+            dto.add(linkTo(methodOn(UsuarioController.class).getById(r.getUsuario().getIdUsuario())).withRel("usuario"));
         return dto;
     }
 

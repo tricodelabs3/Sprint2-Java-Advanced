@@ -8,6 +8,7 @@ import br.com.saudeinteligente.service.UsuarioService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 @RestController
 @RequestMapping("/api/alimentacao")
@@ -23,36 +24,37 @@ public class AlimentacaoController {
 
     @GetMapping
     public List<AlimentacaoDTO> getAll() {
-        return service.findAll().stream().map(this::toDTO).collect(Collectors.toList());
+        return service.findAll().stream().map(this::toDTOWithLinks).collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
     public AlimentacaoDTO getById(@PathVariable Long id) {
-        return toDTO(service.findById(id));
+        return toDTOWithLinks(service.findById(id));
     }
 
     @GetMapping("/usuario/{usuarioId}")
     public List<AlimentacaoDTO> getByUsuario(@PathVariable Long usuarioId) {
-        return service.findByUsuario(usuarioId).stream().map(this::toDTO).collect(Collectors.toList());
+        return service.findByUsuario(usuarioId).stream().map(this::toDTOWithLinks).collect(Collectors.toList());
     }
 
     @PostMapping
     public AlimentacaoDTO create(@RequestBody AlimentacaoDTO dto) {
-        Alimentacao a = toEntity(dto);
-        return toDTO(service.save(a));
+        return toDTOWithLinks(service.save(toEntity(dto)));
     }
 
     @PutMapping("/{id}")
     public AlimentacaoDTO update(@PathVariable Long id, @RequestBody AlimentacaoDTO dto) {
         Alimentacao a = toEntity(dto);
         a.setIdAlimentacao(id);
-        return toDTO(service.save(a));
+        return toDTOWithLinks(service.save(a));
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) { service.delete(id); }
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
+    }
 
-    private AlimentacaoDTO toDTO(Alimentacao a) {
+    private AlimentacaoDTO toDTOWithLinks(Alimentacao a) {
         if (a == null) return null;
         AlimentacaoDTO dto = new AlimentacaoDTO();
         dto.setIdAlimentacao(a.getIdAlimentacao());
@@ -63,6 +65,11 @@ public class AlimentacaoController {
         dto.setCarboidratos(a.getCarboidratos());
         dto.setObservacao(a.getObservacao());
         dto.setUsuarioId(a.getUsuario() != null ? a.getUsuario().getIdUsuario() : null);
+
+        dto.add(linkTo(methodOn(AlimentacaoController.class).getById(a.getIdAlimentacao())).withSelfRel());
+        dto.add(linkTo(methodOn(AlimentacaoController.class).getAll()).withRel("allAlimentacao"));
+        if (a.getUsuario() != null)
+            dto.add(linkTo(methodOn(UsuarioController.class).getById(a.getUsuario().getIdUsuario())).withRel("usuario"));
         return dto;
     }
 

@@ -6,6 +6,7 @@ import br.com.saudeinteligente.service.ClimaService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 @RestController
 @RequestMapping("/api/clima")
@@ -19,31 +20,32 @@ public class ClimaController {
 
     @GetMapping
     public List<ClimaDTO> getAll() {
-        return service.findAll().stream().map(this::toDTO).collect(Collectors.toList());
+        return service.findAll().stream().map(this::toDTOWithLinks).collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
     public ClimaDTO getById(@PathVariable Long id) {
-        return toDTO(service.findById(id));
+        return toDTOWithLinks(service.findById(id));
     }
 
     @PostMapping
     public ClimaDTO create(@RequestBody ClimaDTO dto) {
-        Clima c = toEntity(dto);
-        return toDTO(service.save(c));
+        return toDTOWithLinks(service.save(toEntity(dto)));
     }
 
     @PutMapping("/{id}")
     public ClimaDTO update(@PathVariable Long id, @RequestBody ClimaDTO dto) {
         Clima c = toEntity(dto);
         c.setIdClima(id);
-        return toDTO(service.save(c));
+        return toDTOWithLinks(service.save(c));
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) { service.delete(id); }
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
+    }
 
-    private ClimaDTO toDTO(Clima c) {
+    private ClimaDTO toDTOWithLinks(Clima c) {
         if (c == null) return null;
         ClimaDTO dto = new ClimaDTO();
         dto.setIdClima(c.getIdClima());
@@ -52,6 +54,9 @@ public class ClimaController {
         dto.setTemperatura(c.getTemperatura());
         dto.setUmidade(c.getUmidade());
         dto.setCondicao(c.getCondicao());
+
+        dto.add(linkTo(methodOn(ClimaController.class).getById(c.getIdClima())).withSelfRel());
+        dto.add(linkTo(methodOn(ClimaController.class).getAll()).withRel("allClimas"));
         return dto;
     }
 
