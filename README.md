@@ -156,12 +156,17 @@ Após a integração com o **Oracle Database** (banco da FIAP), as requisições
 **Body (JSON):**
 ```json
 {
-  "nome": "Ana Silva",
-  "email": "ana.silva@teste.com",
+  "nome": "Ana Oliveira",
+  "email": "ana.duda@example.com",
   "senha": "123456",
-  "dtNascimento": "2000-08-15",
-  "genero": "Feminino"
+  "dtNascimento": "1995-08-20",
+  "genero": "Feminino",
+  "sono": [],
+  "exercicios": [],
+  "alimentacoes": [],
+  "recomendacoes": []
 }
+
 ```
 ## 💾 Verificação no Banco Oracle
 
@@ -173,7 +178,7 @@ SELECT * FROM USUARIO;
 
 | ID_USUARIO | NOME       | EMAIL                | DT_NASCIMENTO | GENERO    |
 |------------|------------|--------------------|---------------|-----------|
-| 1          | Ana Silva  | ana.silva@teste.com | 2000-08-15    | Feminino  |
+| 1          | Ana Oliveira  | ana.duda@example.com | 1995-08-20    | Feminino  |
 ```
 ---
 
@@ -227,6 +232,7 @@ Esses avanços posicionam o projeto no **Nível 3 do Modelo REST de Richardson**
 
 > 💬 **Equipe Saúde Inteligente**  
 > *“Prevenir é mais inteligente do que remediar.”*
+
 
 
 
