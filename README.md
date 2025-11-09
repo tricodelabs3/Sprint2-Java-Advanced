@@ -166,6 +166,9 @@ Após a integração com o **Oracle Database** (banco da FIAP), as requisições
   "recomendacoes": []
 }
 
+
+
+
 ```
 ## 💾 Verificação no Banco Oracle
 
@@ -245,6 +248,7 @@ Para cumprir os requisitos da entrega (critérios b e f-3.4), seguem os três di
 
 > 💬 **Equipe Saúde Inteligente**  
 > *“Prevenir é mais inteligente do que remediar.”*
+
 
 
 
