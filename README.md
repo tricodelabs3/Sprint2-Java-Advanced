@@ -183,8 +183,8 @@ Após enviar a requisição, é possível confirmar o registro diretamente no SQ
 
 ```sql
 SELECT * FROM USUARIO;
-
-
+```
+```
 | ID_USUARIO | NOME       | EMAIL                | DT_NASCIMENTO | GENERO    |
 |------------|------------|--------------------|---------------|-----------|
 | 1          | Ana Oliveira  | ana.duda@example.com | 1995-08-20    | Feminino  |
@@ -255,6 +255,7 @@ Para cumprir os requisitos da entrega (critérios b e f-3.4), seguem os três di
 
 > 💬 **Equipe Saúde Inteligente**  
 > *“Prevenir é mais inteligente do que remediar.”*
+
 
 
 
