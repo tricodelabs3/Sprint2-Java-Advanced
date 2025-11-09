@@ -229,16 +229,14 @@ Esses avanços posicionam o projeto no **Nível 3 do Modelo REST de Richardson**
 Para cumprir os requisitos da entrega (critérios b e f-3.4), seguem os três diagramas que representam a solução:
 
 ### 1. Diagrama de Arquitetura
-![Diagrama de Arquitetura](<img width="121" height="681" alt="Diagrama de arquitetura drawio" src="https://github.com/user-attachments/assets/86c3882c-9ae2-4923-8212-aecb3d019b25" />
-)
+<img width="121" height="681" alt="Diagrama de arquitetura drawio" src="https://github.com/user-attachments/assets/9cbe9bb1-2f0a-4a2f-858e-f82b9b9c4ee8" />
 
 ### 2. Diagrama de Classes de Entidade
-![Diagrama de Entidades](<img width="921" height="502" alt="Diagrama_Sprint1_Vitta drawio" src="https://github.com/user-attachments/assets/ca1e0bd5-ce97-4553-8b3e-a9d877d3825a" />
-)
+<img width="921" height="502" alt="Diagrama_Sprint1_Vitta drawio" src="https://github.com/user-attachments/assets/a366a6d5-cd13-4b56-95ae-3679b814c401" />
 
 ### 3. Diagrama de Entidade e Relacionamento (DER)
-![Diagrama DER](<img width="1281" height="1111" alt="Diagrama de Entidade e Relacionamento (DER)  drawio" src="https://github.com/user-attachments/assets/d1cabbf8-d04c-4c29-b78f-2eaaa3faebec" />
-)
+<img width="1281" height="1111" alt="Diagrama de Entidade e Relacionamento (DER)  drawio" src="https://github.com/user-attachments/assets/7db99c90-f9a4-4134-a7d7-b3b25ba53937" />
+
 
 ## 💾  Link do vídeo de apresentação
 
@@ -248,6 +246,7 @@ Para cumprir os requisitos da entrega (critérios b e f-3.4), seguem os três di
 
 > 💬 **Equipe Saúde Inteligente**  
 > *“Prevenir é mais inteligente do que remediar.”*
+
 
 
 
